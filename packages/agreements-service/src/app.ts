@@ -9,6 +9,7 @@ import { log } from './winston'
 import * as IntentsController from './controllers/intentsController'
 import * as MandatesController from './controllers/mandatesController'
 import * as MandatesSpendController from './controllers/mandatesSpendController'
+import * as InvoiceController from './controllers/invoiceController'
 import { AgreementBucketInterface } from './services/agreementBucket'
 import * as IntentValidation from './route-validation/intents'
 import * as MandatesValidation from './route-validation/mandates'
@@ -61,5 +62,10 @@ export class App {
     this._router.get('/mandates/:id', MandatesController.show)
 
     this._router.post('/mandates/:id/spend', MandatesSpendController.store)
+
+    this._router.post('/invoices', InvoiceController.store)
+    this._router.get('/invoices', InvoiceController.index)
+    this._router.get('/invoices/:id', InvoiceController.show)
+    this._router.delete('/invoices/:id',InvoiceController.remove)
   }
 }

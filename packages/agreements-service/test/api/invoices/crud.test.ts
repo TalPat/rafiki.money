@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { App, Agreement } from '../../../src'
+import { App, Agreement, Invoices } from '../../../src'
 import Knex = require('knex')
 import { refreshDatabase } from '../../db'
 import { AgreementBucketMock } from '../../mocks/agreementBucketMock'
@@ -31,7 +31,7 @@ describe('Invoice CRUD tests', () => {
   })
 
   afterEach(async () => {
-    await Agreement.query().delete()
+    await Invoices.query().delete()
     await db.destroy()
   })
 
@@ -41,7 +41,7 @@ describe('Invoice CRUD tests', () => {
 
   test('Can create an invoice', async () => {
     const response = await axios.post('http://localhost:4000/invoices', validInvoiceBody, authData)
-    const invoice = await Agreement.query().where('id', validInvoiceBody.id).first()
+    const invoice = await Invoices.query().where('id', validInvoiceBody.id).first()
 
     expect(response.status).toEqual(201)
     expect(invoice).toBeDefined()
@@ -65,13 +65,13 @@ describe('Invoice CRUD tests', () => {
   })
 
   test('Can get invoices', async () => {
-    await Agreement.query().insert(validInvoiceBody)
+    await Invoices.query().insert(validInvoiceBody)
     const response = await axios.get('http://localhost:4000/invoices', authData)
     expect(response.status).toEqual(200)
     expect(response.data[0]).toEqual(validInvoiceBody)
   })
   test('Can get an invoice by id', async () => {
-    await Agreement.query().insert(validInvoiceBody)
+    await Invoices.query().insert(validInvoiceBody)
     const response = await axios.get(`http://localhost:4000/invoices/${validInvoiceBody.id}`, authData)
     expect(response.status).toEqual(200)
     expect(response.data).toEqual(validInvoiceBody)
@@ -99,10 +99,10 @@ describe('Invoice CRUD tests', () => {
   })
 
   test('Can delete an invoice by id', async () => {
-    await Agreement.query().insert(validInvoiceBody)
+    await Invoices.query().insert(validInvoiceBody)
     const response = await axios.delete(`http://localhost:4000/invoices/${validInvoiceBody.id}`, authData)
     expect(response.status).toEqual(200)
-    const invoice = await Agreement.query().where('id', validInvoiceBody.id).first()
+    const invoice = await Invoices.query().where('id', validInvoiceBody.id).first()
     expect(invoice).toBeUndefined()
   })
   test('Return 404 on unrecognized id', async () => {
@@ -113,7 +113,7 @@ describe('Invoice CRUD tests', () => {
     expect(response).toBeUndefined()
   })
   test('Handle an unauthorized attempt to delete an invoice by id', async () => {
-    await Agreement.query().insert(validInvoiceBody)
+    await Invoices.query().insert(validInvoiceBody)
     const response = await axios.delete(`http://localhost:4000/invoices/${validInvoiceBody}`)
     .catch((error) => {
       expect(error.statusCode).toEqual(403)
