@@ -5,7 +5,7 @@ type props = {
   errorState?: boolean;
   inputRef?: any;
   name: string;
-  style?: any;
+  className?: string;
   textColour?: string;
   blurColour?: string;
   bgColour?: string;
@@ -34,7 +34,7 @@ const TextInput: React.FC<props> = (props) => {
   const [focussed, setFocussed] = React.useState(false)
 
   return (
-    <div style={props.style} className={`bg-${bgColour} max-w-${maxWidth}`}>
+    <div className={`bg-${bgColour} max-w-${maxWidth} relative h-textInput my-2 ${props.className}`}>
 
       <div 
         className={`textFieldOutline border${focussed||props.errorState? '-2': ''} border-${focussed||props.errorState? focusColour: textColour + ' opacity-12'} rounded`}>

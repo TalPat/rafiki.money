@@ -3,6 +3,9 @@ module.exports = {
   important: false,
   separator: ':',
   theme: {
+    height: {
+      textInput: '4.5rem'
+    },
     fontFamily: {
       display: 'Rubik, sans-serif',
       body: 'Rubik, sans-serif'
