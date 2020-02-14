@@ -155,51 +155,41 @@ html {
 /* component definitions */
 }
 
-.inputText {
-  @apply absolute;
-  height: 24px;
-  left: 16px;
-  top: 16px;
-  @apply subtitle-1;
-}
-
 .assistiveText {
   position: absolute;
-  height: 16px;
-  left: 16px;
-  right: 200px;
-  top: 59px;
+  height: 1rem;
+  left: 1rem;
+  right: 12.5rem;
+  top: 3.75rem;
 
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 0.75rem;
+  line-height: 1rem;
 
-  letter-spacing: 0.4px;
+  letter-spacing: 0.025rem;
 }
 
-.textFieldOutline {
+.inputText {
   @apply absolute;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 22.22%;
+  height: 1.5rem;
+  left: 1rem;
+  top: 1rem;
+  @apply subtitle-1;
 }
 
 .inputLabel{
-position: absolute;
-height: 16px;
-left: 16px;
-top: -8px;
+  @apply absolute;
+  height: 1rem;
+  left: 1rem;
+  top: -0.5rem;
 
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 12px;
-line-height: 16px;
+  font-family: Roboto;
+  font-size: 0.75rem;
+  line-height: 1rem;
 
-letter-spacing: 0.4px;
+  letter-spacing: 0.025rem;
 }
 
 @keyframes toLabel {

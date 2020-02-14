@@ -37,7 +37,7 @@ const TextInput: React.FC<props> = (props) => {
     <div className={`bg-${bgColour} max-w-${maxWidth} relative h-textInput my-2 ${props.className}`}>
 
       <div 
-        className={`textFieldOutline border${focussed||props.errorState? '-2': ''} border-${focussed||props.errorState? focusColour: textColour + ' opacity-12'} rounded`}>
+        className={`left-0 right-0 top-0 h-inputBox border${focussed||props.errorState? '-2': ''} border-${focussed||props.errorState? focusColour: textColour + ' opacity-12'} rounded`}>
       </div>
 
       <label 

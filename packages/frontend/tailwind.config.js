@@ -3,9 +3,6 @@ module.exports = {
   important: false,
   separator: ':',
   theme: {
-    height: {
-      textInput: '4.5rem'
-    },
     fontFamily: {
       display: 'Rubik, sans-serif',
       body: 'Rubik, sans-serif'
@@ -84,6 +81,15 @@ module.exports = {
         green: 'var(--color-green)',
         blue: 'var(--color-blue)',
         purple: 'var(--color-purple)',
+      },
+      height: {
+        textInput: '4.5rem',
+        inputBox: '3.5rem',
+      },
+      inset: {
+        '1': '1rem',
+        '1.5': '1.5rem',
+        '2': '2rem',
       },
     },
   },
