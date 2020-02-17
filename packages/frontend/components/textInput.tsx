@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 type props = {
+<<<<<<< HEAD
   inputType?: 'text'|'password'|'email';
   errorState?: boolean;
   inputRef?: any;
@@ -14,11 +15,28 @@ type props = {
   label?: string;
   defaultText?: string;
   maxWidth?: string;
+=======
+  inputType?: 'text'|'password'|'email'
+  className?: string
+  errorState?: boolean
+  inputRef?: any
+  name: string
+  style?: any
+  textColour?: string
+  blurColour?: string
+  bgColour?: string
+  disabled?: boolean
+  hint?: string
+  label?: string
+  defaultText?: string
+  maxWidth?: string
+>>>>>>> upstream/master
   onKeyPress?: (event: any) => void
   validationFunction?: (e: any) => void
 }
 
 const TextInput: React.FC<props> = (props) => {
+  let className
   const textColour = props.textColour? props.textColour : 'on-surface'
   let blurColour = props.blurColour? props.blurColour : 'on-surface-trans'
   let focusColour = 'primary'
@@ -34,7 +52,11 @@ const TextInput: React.FC<props> = (props) => {
   const [focussed, setFocussed] = React.useState(false)
 
   return (
+<<<<<<< HEAD
     <div className={`bg-${bgColour} max-w-${maxWidth} relative h-textInput my-2 ${props.className}`}>
+=======
+    <div style={props.style} className={`bg-${bgColour} max-w-${maxWidth} ${props.className}`}>
+>>>>>>> upstream/master
 
       <div 
         className={`left-0 right-0 top-0 h-inputBox border${focussed||props.errorState? '-2': ''} border-${focussed||props.errorState? focusColour: textColour + ' opacity-12'} rounded`}>

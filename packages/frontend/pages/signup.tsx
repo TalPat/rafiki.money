@@ -15,9 +15,7 @@ const Signup: NextPage = () => {
   const usersService = UsersService()
 
   const onSubmit = async data => {
-    const emailState = validateEmail({ target: { value: data.username } })
-    const passwordState = validatePassword({ target: { value: data.password } })
-    if (emailState && passwordState) {
+    if (validateEmail({ target: { value: data.username } })) {
       await usersService.signup(data.username, data.password).then((data) => {
         window.location.href = `/login?signupSessionId=${data.signupSessionId}`
       })
@@ -54,16 +52,26 @@ const Signup: NextPage = () => {
           <h2 className={`headline-4 text-on-surface text-center my-12`}>Sign up</h2>
 
           <div className=''>
-            <TextInput  errorState={errors.username != undefined} validationFunction={validateEmail} inputRef={(register({required: true}))} name='username' label='email' hint={errors.username ? errors.username.type==='required'?'Email required':(errors.username.message) as string : undefined} className='my-4'></TextInput>
+            <TextInput
+              errorState={errors.username != undefined}
+              validationFunction={validateEmail}
+              inputRef={(register({required: true}))}
+              name='username' label='email' hint={errors.username ? errors.username.type==='required'?'Email required':(errors.username.message) as string : undefined}
+              className='my-4'/>
           </div>
 
           <div>
-            <TextInput  errorState={errors.password != undefined} validationFunction={validatePassword} inputType='password' inputRef={(register({required: true}))} name='password' label='Password' hint={errors.password ? errors.password.type==='required'?'Password required':(errors.password.message) as string : undefined} className='my-4'></TextInput>
+            <TextInput
+              errorState={errors.password != undefined}
+              validationFunction={validatePassword}
+              inputType='password' inputRef={(register({required: true}))}
+              name='password' label='Password' hint={errors.password ? errors.password.type==='required'?'Password required':(errors.password.message) as string : undefined}
+              className='my-4'/>
           </div>
 
           <div className='text-center my-12'>
             <Button onTap={() => router.push('/')} className="mr-4" bgColour="primary" type='text'>GO BACK</Button>
-            <Button disabled={Object.keys(errors).length > 0} bgColour="primary" type='solid' buttonType='submit'>SIGN UP</Button>
+            <Button disabled={Object.keys(errors).length > 0} type='solid' buttonType='submit'>SIGN UP</Button>
           </div>
 
         </form>
@@ -71,13 +79,6 @@ const Signup: NextPage = () => {
     </div>
   )
 
-}
-
-Signup.getInitialProps = async ({}) => {
-
-  // TODO Perhaps do a check if user is logged in already and rather redirect
-
-  return {}
 }
 
 export default Signup
