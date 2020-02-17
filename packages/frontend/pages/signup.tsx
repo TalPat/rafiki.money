@@ -4,9 +4,11 @@ import useForm from 'react-hook-form'
 import { TextInput, Button} from '../components'
 import Link from 'next/link'
 import { UsersService } from '../services/users'
+import { useRouter } from 'next/router'
 
 
 const Signup: NextPage = () => {
+  const router = useRouter()
   const {register, handleSubmit, errors, setError, clearError} = useForm()
   const formRef = useRef<HTMLFormElement>(null)
 
@@ -50,7 +52,7 @@ const Signup: NextPage = () => {
       <div className='w-full h-screen max-w-xs mx-auto bg-surface flex items-center'>
         <form ref={formRef} className='w-full max-w-xs flex-1' onSubmit={handleSubmit(onSubmit)}>
           <h2 className={`headline-4 text-on-surface text-center my-12`}>Sign up</h2>
-          
+
           <div className=''>
             <TextInput  errorState={errors.username != undefined} validationFunction={validateEmail} inputRef={(register({required: true}))} name='username' label='email' hint={errors.username ? errors.username.type==='required'?'Email required':(errors.username.message) as string : undefined} className='my-4'></TextInput>
           </div>
@@ -59,10 +61,8 @@ const Signup: NextPage = () => {
             <TextInput  errorState={errors.password != undefined} validationFunction={validatePassword} inputType='password' inputRef={(register({required: true}))} name='password' label='Password' hint={errors.password ? errors.password.type==='required'?'Password required':(errors.password.message) as string : undefined} className='my-4'></TextInput>
           </div>
 
-          <div className='text-center my-10'>
-            <a href='/' className='mr-4'>
-              <Button onTap={() => { window.location.href = 'landing' }} bgColour="primary" type='text'>GO BACK</Button>
-            </a>
+          <div className='text-center my-12'>
+            <Button onTap={() => router.push('/')} className="mr-4" bgColour="primary" type='text'>GO BACK</Button>
             <Button disabled={Object.keys(errors).length > 0} bgColour="primary" type='solid' buttonType='submit'>SIGN UP</Button>
           </div>
 

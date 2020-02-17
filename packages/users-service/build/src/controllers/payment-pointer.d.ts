@@ -1,0 +1,23 @@
+import { AppContext } from '../app';
+export declare type OAuthServerMetaData = {
+    payment_intents_endpoint: string;
+    payment_mandates_endpoint: string;
+    payment_assets_supported: string[];
+    default_account_id: string;
+    issuer: string;
+    authorization_endpoint: string;
+    token_endpoint: string;
+    response_types_supported: string[];
+    jwks_uri?: string;
+    registration_endpoint?: string;
+    scopes_supported?: string[];
+    response_modes_supported?: string[];
+    grant_types_supported?: string[];
+    token_endpoint_auth_methods_supported?: string[];
+    service_documentation?: string;
+    token_endpoint_auth_signing_alg_values_supported?: string[];
+    ui_locales_supported?: string;
+    op_policy_uri?: string;
+    op_tos_uri?: string;
+};
+export declare function show(ctx: AppContext): Promise<void>;
