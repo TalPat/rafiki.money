@@ -1,0 +1,13 @@
+{
+  "name": "Pay with Rafiki",
+  "short_name": "Rafiki",
+  "icons": [{
+  	"src": "logo_transparent.png",
+  	"sizes": "48x48",
+  	"type": "image/png"
+  }],
+  "serviceworker": {
+    "src": "sw-bobpay.js",
+    "use_cache": false
+  }
+}
